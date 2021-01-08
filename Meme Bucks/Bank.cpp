@@ -5,29 +5,23 @@
 #include <windows.h>
 
 using namespace std;
-
-int Bank::maxAccounts = 10;
+using namespace bank;
 
 int main() {
-	Bank object;
 	while (true) {
-		if (GetKeyState('A') & 0x8000)
-		{
-			object.Bank::AddAccount();
-			cout << "Added Accout" << endl;
-		}
-		system("CLS");
-		cout << &Bank::GetNumAccounts << endl;
+		bank::Commands();
 	}
 }
 
-int Bank::GetNumAccounts() {
-	return Bank::numAccounts;
+void bank::Commands() {
+	string inputs[] = { "", "", "" };
+	cin >> inputs[0] >> inputs[1] >> inputs[2];
+
+	if (inputs[0] == "Account" & inputs[1] != "" & inputs[2] != "") {
+		bank::CreateAccount(inputs[1], inputs[2]);
+	}
 }
 
-void Bank::AddAccount()
-{
-	if (Bank::numAccounts + 1 <= Bank::maxAccounts) {
-		Bank::numAccounts += 1;
-	}
+void bank::CreateAccount(string accountName, string password) {
+	cout << "Created Account: " << accountName << " | Password: " << password << endl;
 }

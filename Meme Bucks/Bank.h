@@ -1,10 +1,10 @@
 #pragma once
+#include <string>
 
-class Bank
+using namespace std;
+
+namespace bank
 {
-	int numAccounts;
-	static int maxAccounts;
-public:
-	void AddAccount();
-	int GetNumAccounts();
+	void Commands();
+	void CreateAccount(string, string);
 };
